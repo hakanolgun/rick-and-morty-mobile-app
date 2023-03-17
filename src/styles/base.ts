@@ -64,6 +64,12 @@ const base = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
   },
+  paginationContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingTop: 14,
+  },
   bigTitle: {
     color: colors.white,
     fontSize: 22,
@@ -137,7 +143,7 @@ const base = StyleSheet.create({
   },
   cardContainer: {
     borderRadius: 6,
-    backgroundColor: colors.bg_light,
+    backgroundColor: colors.main,
   },
   pv: {
     paddingVertical: 10,
