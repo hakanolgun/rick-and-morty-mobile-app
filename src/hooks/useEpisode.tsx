@@ -1,14 +1,14 @@
 import {useEffect} from 'react';
-import {getEpisodes} from '../api/api';
+import {getEpisode} from '../api/api';
 import useAxios from './useAxios';
 
-export const useEpisodes = (page: string) => {
+export const useEpisode = (id: number) => {
   const [res, loading, err, fetchData] = useAxios();
 
   useEffect(() => {
     let control = true;
     const getData = async () => {
-      await fetchData(getEpisodes(page));
+      await fetchData(getEpisode(id));
     };
     if (control) {
       getData();
@@ -17,9 +17,9 @@ export const useEpisodes = (page: string) => {
     return () => {
       control = false;
     };
-  }, [fetchData, page]);
-  // console.log(res);
-  return [res, loading, err, fetchData];
+  }, [fetchData, id]);
+
+  return [res, loading, err];
 };
 
-export default useEpisodes;
+export default useEpisode;
