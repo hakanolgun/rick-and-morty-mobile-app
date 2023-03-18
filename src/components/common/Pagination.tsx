@@ -8,16 +8,15 @@ import colors from '../../styles/colors';
 interface IPagination {
   currentPage: number;
   info: any;
-  onPrev: Function;
-  onNext: Function;
+  changePage: Function;
 }
-const Pagination = ({currentPage, info, onPrev, onNext}: IPagination) => {
+const Pagination = ({currentPage, info, changePage}: IPagination) => {
   return (
     <View style={base.paginationContainer}>
       <Btn
         title="Prev"
         w={100}
-        press={() => onPrev(info.prev)}
+        press={() => changePage(info.prev)}
         disabled={info.prev === null}
         bg={info.prev === null ? colors.text_gray : undefined}
       />
@@ -30,7 +29,7 @@ const Pagination = ({currentPage, info, onPrev, onNext}: IPagination) => {
       <Btn
         title="Next"
         w={100}
-        press={() => onNext(info.next)}
+        press={() => changePage(info.next)}
         disabled={info.next === null}
         bg={info.next === null ? colors.text_gray : undefined}
       />
