@@ -124,15 +124,14 @@ const base = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 22,
   },
   modalView: {
     margin: 20,
-    backgroundColor: colors.bg_light,
+    backgroundColor: colors.bg_dark,
     borderRadius: 20,
     padding: 35,
     alignItems: 'center',
-    shadowColor: '#000',
+    shadowColor: '#fff',
     shadowOffset: {
       width: 0,
       height: 2,
@@ -140,6 +139,13 @@ const base = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
+  },
+  doubleBtnContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    marginTop: 10,
+    gap: 30,
   },
   cardContainer: {
     borderRadius: 6,
