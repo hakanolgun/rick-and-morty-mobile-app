@@ -25,7 +25,7 @@ const EpisodeScreen = ({route}: any) => {
   }
   return (
     <View style={base.con}>
-      <EpisodeInfo name={res.name} date={res.air_date} no={res.episode} />
+      <EpisodeInfo name={res.name} no={res.episode} />
       <Text style={base.title}>Characters In This Episode</Text>
       <FlatList
         data={res.characters}
