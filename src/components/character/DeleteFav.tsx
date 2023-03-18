@@ -67,7 +67,7 @@ const ss = StyleSheet.create({
   view: {
     width: 50,
     height: 50,
-    backgroundColor: colors.bg_light,
+    backgroundColor: colors.text_gray,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
