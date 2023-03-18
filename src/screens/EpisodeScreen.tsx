@@ -51,7 +51,7 @@ const EpisodeScreen = ({route}: any) => {
     return <ShowMsg full err msg={error} />;
   }
   return (
-    <View style={[base.con, {paddingTop: 10}]}>
+    <View style={base.container}>
       <Search
         searchValue={searchValue}
         setSearchValue={setSearchValue}
