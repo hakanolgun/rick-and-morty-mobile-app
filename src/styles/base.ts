@@ -72,19 +72,19 @@ const base = StyleSheet.create({
   },
   bigTitle: {
     color: colors.white,
-    fontSize: 22,
+    fontSize: 20,
     marginBottom: 10,
     textAlign: 'center',
   },
   title: {
     color: colors.white,
-    fontSize: 20,
+    fontSize: 18,
     marginVertical: 10,
     textAlign: 'center',
   },
   text: {
     color: colors.white,
-    fontSize: 18,
+    fontSize: 16,
     marginVertical: 4,
     textAlign: 'center',
     lineHeight: 22,
@@ -99,7 +99,7 @@ const base = StyleSheet.create({
   },
   label: {
     color: colors.white,
-    fontSize: 18,
+    fontSize: 16,
     lineHeight: 22,
     marginVertical: 4,
     textAlign: 'left',

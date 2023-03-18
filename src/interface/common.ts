@@ -1,25 +1,3 @@
-export interface IHomeCard {
-  _id: string;
-  name: string;
-  nameTR: string;
-  linkTo?: string;
-  img?: any;
-}
-
-export interface ICountry {
-  _id: string;
-  name: string;
-  nameTR: string;
-  phone: string;
-  code: string;
-}
-
-export interface IResponse {
-  success: boolean;
-  data?: any;
-  msg?: any;
-}
-
 export interface IShowMsg {
   msg?: string;
   btnTxt?: string;
@@ -36,8 +14,4 @@ export interface IShowMsg {
   mv?: number;
   h?: number | string;
   fs?: number;
-}
-export interface INameAndValue {
-  name: string;
-  value: string;
 }
