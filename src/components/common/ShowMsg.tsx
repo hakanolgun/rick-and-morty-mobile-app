@@ -11,7 +11,7 @@ const ShowMsg = ({
   iconName = 'cloud-done',
   iconSize = 100,
   iconClr = colors.main,
-  btnFunc = () => console.log('ShowMsg'),
+  btnFunc = () => {},
   btnTxt = '',
   full = false,
   err = false,
