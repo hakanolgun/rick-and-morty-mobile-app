@@ -1,8 +1,9 @@
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {Text, StyleSheet, Image, ScrollView, View} from 'react-native';
 import React from 'react';
 import base from '../styles/base';
 import useCharacter from '../hooks/useCharacter';
 import ShowMsg from '../components/common/ShowMsg';
+import DataRow from '../components/common/DataRow';
 
 const CharacterScreen = ({route}: any) => {
   const [res, loading, error] = useCharacter(route.params.charID);
@@ -13,14 +14,23 @@ const CharacterScreen = ({route}: any) => {
     return <ShowMsg full err msg={error} />;
   }
   return (
-    <View style={base.con}>
+    <ScrollView style={base.con} showsVerticalScrollIndicator={false}>
       <Image style={ss.img} source={{uri: res.image}} />
-      <Text>{res.status}</Text>
-      <Text>{res.species}</Text>
-      <Text>{res.gender}</Text>
-      <Text>{res.origin.name}</Text>
-      <Text>{res.location.name}</Text>
-    </View>
+      <View style={base.container}>
+        <DataRow label="Status" data={res.status} />
+        <DataRow label="Species" data={res.species} />
+        <DataRow label="Type" data={res.type} />
+        <DataRow label="Gender" data={res.gender} />
+        <DataRow label="Origin" data={res.origin.name} />
+        <DataRow label="Location" data={res.location.name} />
+        <Text style={ss.title}>This Character's Episodes</Text>
+        {res.episode.map((item: string) => (
+          <Text key={item} style={base.label}>
+            {item}
+          </Text>
+        ))}
+      </View>
+    </ScrollView>
   );
 };
 
@@ -31,5 +41,9 @@ const ss = StyleSheet.create({
     height: 250,
     resizeMode: 'cover',
     marginVertical: 10,
+  },
+  title: {
+    ...base.title,
+    marginTop: 30,
   },
 });
