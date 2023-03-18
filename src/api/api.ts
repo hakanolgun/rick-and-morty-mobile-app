@@ -11,3 +11,10 @@ export const getEpisode = (id: number) => {
     url: `episode/${id}`,
   };
 };
+
+export const getCharacter = (id: string) => {
+  return {
+    method: 'GET',
+    url: `character/${id}`,
+  };
+};
