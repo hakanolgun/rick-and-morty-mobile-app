@@ -6,8 +6,8 @@ import ShowMsg from '../components/common/ShowMsg';
 import {IEpisode} from '../interface/episode';
 import EpisodeCard from '../components/episode/EpisodeCard';
 import Pagination from '../components/common/Pagination';
-import EpisodeSearch from '../components/episode/EpisodeSearch';
 import {getSearchParamFromURL} from '../utils/utils';
+import Search from '../components/common/Search';
 
 const EpisodesScreen = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -21,7 +21,7 @@ const EpisodesScreen = () => {
     }
   }, [res]);
 
-  const handleSearchResults = async (value: string) => {
+  const handleSearch = async (value: string) => {
     await fetchAgain('1', value);
   };
 
@@ -45,8 +45,8 @@ const EpisodesScreen = () => {
   }
   return (
     <View style={base.container}>
-      <EpisodeSearch
-        handleSearch={handleSearchResults}
+      <Search
+        handleSearch={handleSearch}
         searchValue={searchValue}
         setSearchValue={setSearchValue}
       />

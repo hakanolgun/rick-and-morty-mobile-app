@@ -9,7 +9,7 @@ interface IProps {
   setSearchValue: Function;
 }
 
-const EpisodeSearch = ({handleSearch, searchValue, setSearchValue}: IProps) => {
+const Search = ({handleSearch, searchValue, setSearchValue}: IProps) => {
   const handlePress = () => {
     handleSearch(searchValue);
   };
@@ -34,7 +34,7 @@ const EpisodeSearch = ({handleSearch, searchValue, setSearchValue}: IProps) => {
   );
 };
 
-export default EpisodeSearch;
+export default Search;
 const ss = StyleSheet.create({
   container: {
     height: 60,
