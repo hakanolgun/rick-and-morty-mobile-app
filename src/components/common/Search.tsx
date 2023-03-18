@@ -26,6 +26,7 @@ const Search = ({handleSearch, searchValue, setSearchValue}: IProps) => {
         onChangeText={updateValue}
         value={searchValue}
         placeholder="Search..."
+        placeholderTextColor={'whitesmoke'}
       />
       <TouchableOpacity style={ss.btn} onPress={handlePress}>
         <Icon name="search" color="white" size={26} />
