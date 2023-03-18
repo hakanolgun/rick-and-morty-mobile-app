@@ -18,7 +18,6 @@ export const useEpisodes = (page: string) => {
       control = false;
     };
   }, [fetchData, page]);
-  // console.log(res);
   return [res, loading, err, fetchData];
 };
 

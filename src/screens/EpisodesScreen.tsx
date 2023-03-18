@@ -16,16 +16,11 @@ const EpisodesScreen = () => {
     <EpisodeCard episode={item} />
   );
 
-  const handlePrev = async (prev: string) => {
-    if (prev) {
-      await fetchAgain(getEpisodes(prev.charAt(prev.length - 1)));
-      setCurrentPage(p => p - 1);
-    }
-  };
-  const handleNext = async (next: string) => {
-    if (next) {
-      await fetchAgain(getEpisodes(next.charAt(next.length - 1)));
-      setCurrentPage(p => p + 1);
+  const handlePageChange = async (url: string) => {
+    if (url) {
+      const newPage = url.charAt(url.length - 1);
+      await fetchAgain(getEpisodes(newPage));
+      setCurrentPage(Number(newPage));
     }
   };
 
@@ -46,8 +41,7 @@ const EpisodesScreen = () => {
       <Pagination
         currentPage={currentPage}
         info={res.info}
-        onPrev={handlePrev}
-        onNext={handleNext}
+        changePage={handlePageChange}
       />
     </View>
   );
