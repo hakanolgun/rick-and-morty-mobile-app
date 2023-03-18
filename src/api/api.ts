@@ -1,7 +1,7 @@
-export const getEpisodes = (page: string) => {
+export const getEpisodes = (page: string, name: string = '') => {
   return {
     method: 'GET',
-    url: `episode?page=${page}`,
+    url: `episode?page=${page}&name=${name}`,
   };
 };
 

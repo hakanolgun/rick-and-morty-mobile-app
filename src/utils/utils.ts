@@ -15,3 +15,16 @@ export const generateBeginAndEndNumbers = (input: number) => {
   const secondNumber = firstNumber + 2;
   return [firstNumber, secondNumber];
 };
+
+export const getSearchParamFromURL = (url: string, param: string) => {
+  const include = url.includes(param);
+
+  if (!include) {
+    return null;
+  }
+
+  const params = url.split(/([&,?,=])/);
+  const index = params.indexOf(param);
+  const value = params[index + 2];
+  return value;
+};

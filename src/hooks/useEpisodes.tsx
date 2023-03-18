@@ -1,24 +1,27 @@
-import {useEffect} from 'react';
+import {useCallback, useEffect} from 'react';
 import {getEpisodes} from '../api/api';
 import useAxios from './useAxios';
 
-export const useEpisodes = (page: string) => {
+export const useEpisodes = (page: string, name: string = '') => {
   const [res, loading, err, fetchData] = useAxios();
 
-  useEffect(() => {
-    let control = true;
-    const getData = async () => {
-      await fetchData(getEpisodes(page));
-    };
-    if (control) {
-      getData();
-    }
+  const fetchAgain = useCallback(
+    async (p: string, n: string) => {
+      await fetchData(getEpisodes(p, n));
+    },
+    [fetchData],
+  );
 
+  useEffect(() => {
+    let ignore = false;
+    if (!ignore) {
+      fetchAgain(page, name);
+    }
     return () => {
-      control = false;
+      ignore = true;
     };
-  }, [fetchData, page]);
-  return [res, loading, err, fetchData];
+  }, [fetchAgain, page, name]);
+  return [res, loading, err, fetchAgain];
 };
 
 export default useEpisodes;
