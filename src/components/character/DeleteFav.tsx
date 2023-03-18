@@ -35,13 +35,13 @@ const DeleteFav = ({charID}: IProps) => {
         onRequestClose={() => {
           setModalVisible(!modalVisible);
         }}>
-        <View style={ss.centeredView}>
-          <View style={ss.modalView}>
+        <View style={base.centeredView}>
+          <View style={base.modalView}>
             <Text style={base.text}>
               Are you sure you want to remove {res?.name ?? 'this character'}{' '}
               from favorites?
             </Text>
-            <View style={ss.doubleBtnContainer}>
+            <View style={base.doubleBtnContainer}>
               <Btn w={90} title="Yes" press={deleteItem} />
               <Btn w={90} title="No" press={() => setModalVisible(false)} />
             </View>
@@ -74,32 +74,5 @@ const ss = StyleSheet.create({
     borderRadius: 25,
     marginTop: 3,
     marginRight: 3,
-  },
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: colors.bg_dark,
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
-    shadowColor: '#fff',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  doubleBtnContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    marginTop: 10,
-    gap: 30,
   },
 });

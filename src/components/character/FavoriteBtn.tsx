@@ -1,15 +1,18 @@
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
-import React from 'react';
+import {Modal, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/Fontisto';
 import colors from '../../styles/colors';
 import {addFav, deleteFav, useFavs} from '../../store/slices/favoriteSlice';
 import {useAppDispatch} from '../../store/hookTypes';
+import base from '../../styles/base';
+import Btn from '../common/Btn';
 
 interface IProps {
   charID: string;
 }
 
 const FavoriteBtn = ({charID}: IProps) => {
+  const [modalVisible, setModalVisible] = useState(false);
   const dispatch = useAppDispatch();
   const favs = useFavs();
   const faved = favs.some(item => item === charID);
@@ -17,6 +20,8 @@ const FavoriteBtn = ({charID}: IProps) => {
   const handlePress = async () => {
     if (faved) {
       dispatch(deleteFav(charID));
+    } else if (favs.length >= 10) {
+      setModalVisible(true);
     } else {
       dispatch(addFav(charID));
     }
@@ -27,6 +32,25 @@ const FavoriteBtn = ({charID}: IProps) => {
       <View style={ss.view}>
         <Icon name="heart" color={faved ? 'red' : 'white'} size={30} />
       </View>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+        }}>
+        <View style={base.centeredView}>
+          <View style={base.modalView}>
+            <Text style={base.text}>
+              You've exceeded the number of favorite characters added. You have
+              to remove another character from favorites.
+            </Text>
+            <View style={base.doubleBtnContainer}>
+              <Btn w={90} title="Back" press={() => setModalVisible(false)} />
+            </View>
+          </View>
+        </View>
+      </Modal>
     </TouchableOpacity>
   );
 };
