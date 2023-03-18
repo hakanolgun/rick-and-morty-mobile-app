@@ -11,13 +11,7 @@ const message = "You don't have any favorite character";
 
 const FavoritesScreen = () => {
   const favs = useFavs();
-  console.log('favs', favs);
-  console.log('favs.toString', favs.toString());
   const [res, loading, error, fetchAgain] = useCharacter(favs.toString());
-
-  React.useEffect(() => {
-    console.log('res', res);
-  }, [res]);
 
   const onRefresh = React.useCallback(async () => {
     await fetchAgain(favs.toString());
