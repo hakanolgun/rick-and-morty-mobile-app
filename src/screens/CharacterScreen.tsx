@@ -1,4 +1,4 @@
-import {Text, StyleSheet, Image, ScrollView, View} from 'react-native';
+import {StyleSheet, Image, ScrollView, View, Text} from 'react-native';
 import React from 'react';
 import base from '../styles/base';
 import useCharacter from '../hooks/useCharacter';
@@ -15,6 +15,7 @@ const CharacterScreen = ({route}: any) => {
   }
   return (
     <ScrollView style={base.con} showsVerticalScrollIndicator={false}>
+      <Text style={ss.title}>{res.name}</Text>
       <Image style={ss.img} source={{uri: res.image}} />
       <View style={base.container}>
         <DataRow label="Status" data={res.status} />
@@ -23,12 +24,6 @@ const CharacterScreen = ({route}: any) => {
         <DataRow label="Gender" data={res.gender} />
         <DataRow label="Origin" data={res.origin.name} />
         <DataRow label="Location" data={res.location.name} />
-        <Text style={ss.title}>This Character's Episodes</Text>
-        {res.episode.map((item: string) => (
-          <Text key={item} style={base.label}>
-            {item}
-          </Text>
-        ))}
       </View>
     </ScrollView>
   );
@@ -38,12 +33,12 @@ export default CharacterScreen;
 const ss = StyleSheet.create({
   img: {
     width: '100%',
-    height: 250,
-    resizeMode: 'cover',
+    height: 400,
     marginVertical: 10,
   },
   title: {
     ...base.title,
     marginTop: 30,
+    fontWeight: 'bold',
   },
 });
