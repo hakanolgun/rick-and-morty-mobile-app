@@ -1,15 +1,37 @@
 import {View, Text, FlatList} from 'react-native';
-import React from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import ShowMsg from '../components/common/ShowMsg';
 import base from '../styles/base';
 import useEpisode from '../hooks/useEpisode';
 import EpisodeInfo from '../components/episode/EpisodeInfo';
 import CharacterCard from '../components/character/CharacterCard';
 import FavoriteBtn from '../components/character/FavoriteBtn';
-import {getCharID} from '../utils/utils';
+import {generateBeginAndEndNumbers, getCharID} from '../utils/utils';
+import CharPagination from '../components/character/CharPagination';
 
 const EpisodeScreen = ({route}: any) => {
   const [res, loading, error] = useEpisode(route.params.id);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [maxPage, setMaxPage] = useState(1);
+  const [itemsToShow, setItemsToShow] = useState([]);
+
+  const handleMaxPage = useCallback(() => {
+    const max = Math.ceil(res.characters.length / 2);
+    setMaxPage(max);
+  }, [res]);
+
+  const getItemsToShow = useCallback(() => {
+    const [begin, end] = generateBeginAndEndNumbers(currentPage);
+    let arr = res.characters.slice(begin, end);
+    setItemsToShow(arr);
+  }, [res, currentPage]);
+
+  useEffect(() => {
+    if (res) {
+      handleMaxPage();
+      getItemsToShow();
+    }
+  }, [getItemsToShow, handleMaxPage, res]);
 
   const renderCharacters = ({item}: {item: string}) => (
     <CharacterCard url={item}>
@@ -28,11 +50,16 @@ const EpisodeScreen = ({route}: any) => {
       <EpisodeInfo name={res.name} no={res.episode} />
       <Text style={base.title}>Characters In This Episode</Text>
       <FlatList
-        data={res.characters}
+        data={itemsToShow}
         keyExtractor={item => item}
         renderItem={renderCharacters}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{paddingBottom: 10}}
+      />
+      <CharPagination
+        currentPage={currentPage}
+        changePage={setCurrentPage}
+        maxPage={maxPage}
       />
     </View>
   );
