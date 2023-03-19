@@ -1,4 +1,4 @@
-import {View, FlatList} from 'react-native';
+import {View, FlatList, SafeAreaView} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import base from '../styles/base';
 import ShowMsg from '../components/common/ShowMsg';
@@ -45,29 +45,31 @@ const EpisodesScreen = () => {
   }
 
   return (
-    <View style={base.container}>
-      <Search
-        handleSearch={handleSearch}
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-      />
-      {error ? <ShowMsg full msg={error} /> : null}
-      {!error ? (
-        <>
-          <FlatList
-            data={episodes}
-            keyExtractor={item => String(item.id)}
-            renderItem={renderCards}
-            showsVerticalScrollIndicator={false}
-          />
-          <Pagination
-            currentPage={currentPage}
-            info={res.info}
-            changePage={handlePageChange}
-          />
-        </>
-      ) : null}
-    </View>
+    <SafeAreaView style={base.con}>
+      <View style={base.container}>
+        <Search
+          handleSearch={handleSearch}
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+        />
+        {error ? <ShowMsg full msg={error} /> : null}
+        {!error ? (
+          <>
+            <FlatList
+              data={episodes}
+              keyExtractor={item => String(item.id)}
+              renderItem={renderCards}
+              showsVerticalScrollIndicator={false}
+            />
+            <Pagination
+              currentPage={currentPage}
+              info={res.info}
+              changePage={handlePageChange}
+            />
+          </>
+        ) : null}
+      </View>
+    </SafeAreaView>
   );
 };
 
