@@ -14,11 +14,12 @@ const Pagination = ({currentPage, info, changePage}: IPagination) => {
   return (
     <View style={base.paginationContainer}>
       <Btn
-        title="Prev"
+        title="Previous"
         w={100}
         press={() => changePage(info.prev)}
         disabled={info.prev === null}
         bg={info.prev === null ? colors.text_gray : undefined}
+        fs={15}
       />
       <PaginationDot
         activeDotColor={'white'}
@@ -27,11 +28,12 @@ const Pagination = ({currentPage, info, changePage}: IPagination) => {
         sizeRatio={1.5}
       />
       <Btn
-        title="Next"
+        title="Next Page"
         w={100}
         press={() => changePage(info.next)}
         disabled={info.next === null}
         bg={info.next === null ? colors.text_gray : undefined}
+        fs={15}
       />
     </View>
   );
