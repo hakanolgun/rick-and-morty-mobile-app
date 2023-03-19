@@ -25,11 +25,7 @@ const FavoritesScreen = () => {
     );
   };
 
-  const result = res
-    ? res.length
-      ? res.reverse()
-      : [res].flat().reverse()
-    : [];
+  const result = res ? (res.length ? res : [res].flat()) : [];
   if (loading) {
     return <ShowMsg full loading />;
   }
