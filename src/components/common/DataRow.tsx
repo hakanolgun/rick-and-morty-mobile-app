@@ -28,9 +28,6 @@ const ss = StyleSheet.create({
     fontSize: 16,
     color: colors.white,
   },
-  mid: {fontSize: 16, colors: colors.white},
-  data: {
-    color: colors.white,
-    fontSize: 16,
-  },
+  mid: {fontSize: 16, color: colors.white},
+  data: {color: colors.white, fontSize: 16},
 });
