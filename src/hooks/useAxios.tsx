@@ -8,9 +8,6 @@ axios.defaults.baseURL = url;
 interface IAxiosParams {
   method: string;
   url: any;
-  data?: any;
-  headers?: any;
-  newToken?: string;
 }
 
 export const useAxios = () => {
@@ -20,12 +17,13 @@ export const useAxios = () => {
 
   const fetchData = useCallback(async (params: IAxiosParams) => {
     try {
+      setErr('');
       setLoading(true);
       const result = await axios.request(params);
       setRes(result.data);
     } catch (error: any) {
-      console.error('useAxios Error ', error);
-      setErr('Something went wrong!');
+      const msg = error.response.data.error ?? 'Something went wrong!';
+      setErr(msg);
     } finally {
       setLoading(false);
     }

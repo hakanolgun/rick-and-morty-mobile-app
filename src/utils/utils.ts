@@ -14,7 +14,7 @@ export const getSearchParamFromURL = (url: string, param: string) => {
   const include = url.includes(param);
 
   if (!include) {
-    return null;
+    return '';
   }
 
   const params = url.split(/([&,?,=])/);

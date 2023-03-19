@@ -7,18 +7,14 @@ import CharacterCard from '../components/character/CharacterCard';
 import FavoriteBtn from '../components/character/FavoriteBtn';
 import {generateBeginAndEndNumbers, getCharID} from '../utils/utils';
 import CharPagination from '../components/character/CharPagination';
-import Search from '../components/common/Search';
+// import Search from '../components/common/Search';
 
 const EpisodeScreen = ({route}: any) => {
   const [res, loading, error] = useEpisode(route.params.id);
   const [currentPage, setCurrentPage] = useState(1);
   const [maxPage, setMaxPage] = useState(1);
   const [itemsToShow, setItemsToShow] = useState([]);
-  const [searchValue, setSearchValue] = useState('');
-
-  const handleSearch = (value: string) => {
-    console.log('value', value);
-  };
+  // const [searchValue, setSearchValue] = useState('');
 
   const handleMaxPage = useCallback(() => {
     const max = Math.ceil(res.characters.length / 2);
@@ -52,11 +48,11 @@ const EpisodeScreen = ({route}: any) => {
   }
   return (
     <View style={base.container}>
-      <Search
+      {/* <Search
         searchValue={searchValue}
         setSearchValue={setSearchValue}
         handleSearch={handleSearch}
-      />
+      /> */}
       <Text style={base.title}>Characters In This Episode</Text>
       <FlatList
         data={itemsToShow}
