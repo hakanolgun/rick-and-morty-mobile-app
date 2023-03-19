@@ -41,6 +41,7 @@ const FavoritesScreen = () => {
           data={result}
           keyExtractor={item => item.id}
           renderItem={renderCards}
+          contentContainerStyle={{paddingBottom: 10}}
           refreshControl={
             <RefreshControl refreshing={loading} onRefresh={onRefresh} />
           }
