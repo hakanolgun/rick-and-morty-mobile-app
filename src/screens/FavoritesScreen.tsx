@@ -25,7 +25,12 @@ const FavoritesScreen = () => {
     );
   };
 
-  const result = res ? (res.length ? res : [res].flat()) : [];
+  let result = res ? (res.length ? res : [res].flat()) : [];
+  if (result.length > 0) {
+    result = result.sort((a: any, b: any) => {
+      return favs.indexOf(a.id.toString()) - favs.indexOf(b.id.toString());
+    });
+  }
   if (loading) {
     return <ShowMsg full loading />;
   }
