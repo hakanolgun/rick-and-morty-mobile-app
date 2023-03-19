@@ -15,7 +15,7 @@ const CharPagination = ({currentPage, maxPage, changePage}: IPagination) => {
     <View style={[base.paginationContainer, {padding: 10}]}>
       <Btn
         title="Previous"
-        w={120}
+        w={110}
         press={() => changePage(currentPage - 1)}
         disabled={currentPage === 1}
         bg={currentPage === 1 ? colors.text_gray : undefined}
@@ -29,7 +29,7 @@ const CharPagination = ({currentPage, maxPage, changePage}: IPagination) => {
       />
       <Btn
         title="Next Page"
-        w={120}
+        w={110}
         press={() => changePage(currentPage + 1)}
         disabled={currentPage === maxPage}
         bg={currentPage === maxPage ? colors.text_gray : undefined}
