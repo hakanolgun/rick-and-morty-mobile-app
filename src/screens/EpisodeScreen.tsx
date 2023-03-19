@@ -47,7 +47,7 @@ const EpisodeScreen = ({route}: any) => {
     return <ShowMsg full err msg={error} />;
   }
   return (
-    <View style={base.container}>
+    <View style={base.con}>
       {/* <Search
         searchValue={searchValue}
         setSearchValue={setSearchValue}
@@ -59,7 +59,7 @@ const EpisodeScreen = ({route}: any) => {
         keyExtractor={item => item}
         renderItem={renderCharacters}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{paddingBottom: 10}}
+        contentContainerStyle={{padding: 10}}
       />
       <CharPagination
         currentPage={currentPage}
