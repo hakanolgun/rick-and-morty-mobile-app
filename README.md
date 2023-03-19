@@ -23,16 +23,17 @@ This is a React Native project with React Native CLI.
 
 ### iOS
 
-1. Clone the project
-2. `yarn`
-3. `cd ios/ && pod install && cd ..`
-4. `yarn start`
-5. `yarn ios`
+1. You need XCode, an iPhone simulator or iPhone device connected to your Mac.
+2. Clone the project
+3. `yarn`
+4. `cd ios/ && pod install && cd ..`
+5. `yarn start`
+6. `yarn ios`
 
 ### Android
 
 1. Clone the project
-2. Prepare the device or emulator
+2. Prepare an android device or emulator
 3. `yarn`
 4. `yarn start`
 5. `yarn android`
